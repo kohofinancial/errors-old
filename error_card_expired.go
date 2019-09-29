@@ -11,7 +11,7 @@ type ErrorCardExpired struct {
 
 // CardExpired returns a new instance of ErrorCardExpired
 func CardExpired(message string) error {
-	newBase := NewBase(fmt.Sprintf("card expired:: %s", message))
+	newBase := NewBase(fmt.Sprintf("card expired :: %s", message))
 	return ErrorCardExpired{
 		newBase,
 	}
