@@ -11,7 +11,7 @@ type ErrorInvalidAmount struct {
 
 // InvalidAmount returns a new instance of ErrorInvalidAmount
 func InvalidAmount(message string) error {
-	newBase := NewBase(fmt.Sprintf("invalid amount:: %s", message))
+	newBase := NewBase(fmt.Sprintf("invalid amount :: %s", message))
 	return ErrorInvalidAmount{
 		newBase,
 	}
