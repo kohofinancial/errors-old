@@ -142,7 +142,7 @@ func TestStackTrace(t *testing.T) {
 	}, {
 		Cause(func() error {
 			return func() error {
-				return Errorf("hello %s", fmt.Sprintf("world: %s", "ooh"))
+				return Errorf("hello %s", fmt.Sprintf("world"))
 			}()
 		}()), []string{
 			`github.com/pkg/errors.TestStackTrace.func2.1` +
