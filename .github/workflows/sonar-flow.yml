@@ -1,0 +1,23 @@
+name: Sonar Flow
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Setup GO
+        uses: actions/setup-go@v2.1.4
+        with:
+          go-version: '1.17'
+      - name: Clone repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build and Test
+        run: make test
+      - name: SonarCloud scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
