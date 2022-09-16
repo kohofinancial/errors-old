@@ -142,11 +142,22 @@ type fundamental struct {
 	*stack
 }
 
-func (f *fundamental) Error() string { return fmt.Sprintf("%+v", f) }
+func (f *fundamental) Error() string { return f.msg }
 
 func (f *fundamental) Format(s fmt.State, verb rune) {
-	io.WriteString(s, f.msg)
-	f.stack.Format(s, verb)
+	switch verb {
+	case 'v':
+		if s.Flag('+') {
+			io.WriteString(s, f.msg)
+			f.stack.Format(s, verb)
+			return
+		}
+		fallthrough
+	case 's':
+		io.WriteString(s, f.msg)
+	case 'q':
+		fmt.Fprintf(s, "%q", f.msg)
+	}
 }
 
 // WithStack annotates err with a stack trace at the point WithStack was called.
