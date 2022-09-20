@@ -9,10 +9,13 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./github.com/kohofinancial/errors
+        working-directory: github.com/kohofinancial/errors
 
     steps:
       - uses: actions/checkout@v3.0.2
+
+      - name: Debug
+        run: pwd && ls -lahG
 
       - name: Setup Go
         uses: actions/setup-go@v3.3.0
