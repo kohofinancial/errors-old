@@ -4,11 +4,13 @@ on:
   - push
 
 jobs:
+
   Test:
     runs-on: ubuntu-20.04
 
     defaults:
       run:
+        # For tests, we need the path to be the Github repository path for proper stack traces in the tests.
         working-directory: github.com/kohofinancial/errors
 
     steps:
@@ -16,14 +18,10 @@ jobs:
         with:
           path: github.com/kohofinancial/errors
 
-      - name: Debug
-        run: pwd && ls -lahG
-
       - name: Setup Go
         uses: actions/setup-go@v3.3.0
         with:
-          go-version-file: go.mod
+          go-version-file: github.com/kohofinancial/errors/go.mod
 
-      # On this stage, we need the path to be the Github repository path for proper stack traces.
       - name: Test
         run: go test -v ./...
