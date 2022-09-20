@@ -1,20 +1,21 @@
 name: Go
 
-on: [push]
+on:
+  - push
 
 jobs:
   Test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.0.2
         with:
           path: github.com/kohofinancial/errors
 
       - name: Setup Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3.3.0
         with:
-          go-version: 1.15
+          go-version-file: go.mod
 
       # On this stage, we need the path to be the Github repository path for proper stack traces.
       - name: Test
