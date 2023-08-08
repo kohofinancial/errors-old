@@ -19,7 +19,7 @@ jobs:
           path: github.com/kohofinancial/errors
 
       - name: Setup Go
-        uses: actions/setup-go@v4.0.1
+        uses: actions/setup-go@v4.1.0
         with:
           go-version-file: github.com/kohofinancial/errors/go.mod
 
