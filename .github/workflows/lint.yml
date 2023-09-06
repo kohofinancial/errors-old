@@ -1,0 +1,13 @@
+name: Non-Go linting
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  lint:
+    name: Non-Go lint code base
+    uses: kohofinancial/actions/.github/workflows/linter.yml@main
