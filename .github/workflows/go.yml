@@ -14,7 +14,7 @@ jobs:
         working-directory: github.com/kohofinancial/errors
 
     steps:
-      - uses: actions/checkout@v4.1.3
+      - uses: actions/checkout@v4.1.4
         with:
           path: github.com/kohofinancial/errors
 
